@@ -1,4 +1,4 @@
-// Define the Drumkit class
+x// Define the Drumkit class
 class Drumkit {
     constructor() {
         // Select all pad elements
