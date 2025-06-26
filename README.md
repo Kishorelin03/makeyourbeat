@@ -1,4 +1,4 @@
-  <h1>🎵 Drumkit Sequencer</h1>
+  <h1>🎵 Make Your Beat</h1>
   <p>A clean and subtle beat-maker web app that allows users to create looped drum patterns using kick, snare, and hi-hat tracks.</p>
 
   <h2>📂 Project Structure</h2>
