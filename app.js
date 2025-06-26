@@ -1,4 +1,4 @@
-x// Define the Drumkit class
+// Define the Drumkit class
 class Drumkit {
     constructor() {
         // Select all pad elements
@@ -22,6 +22,8 @@ class Drumkit {
         this.bpm = 150;
 
         this.isPlaying = null;
+
+        this.selects = document.querySelectorAll('select');
     }
 
     // Toggle the 'active' class on a pad when clicked
@@ -82,6 +84,22 @@ class Drumkit {
             this.playBtn.classList.remove("active");
         }
     }
+
+    changeSound(e) {
+        const selectionName = e.target.name;
+        const selectionValue = e.target.value;
+        switch(selectionName){
+            case "kick-select":
+                this.kickAudio.src = selectionValue;
+                break;
+            case "snare-select":
+                this.snareAudio.src =selectionValue;
+                break;
+            case "hihat-select":
+                this.hihatAudio.src = selectionValue;
+                break;   
+        }
+    }
 }
 
 // Instantiate a new Drumkit object
@@ -100,3 +118,10 @@ drumKit.playBtn.addEventListener('click', () => {
     drumKit.updateBtn()
     drumKit.start();
 });
+
+
+drumKit.selects.forEach(select => {
+    select.addEventListener('change', function(e){
+        drumKit.changeSound(e);
+    })
+})
