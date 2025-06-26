@@ -1,3 +1,6 @@
+/* ============================
+   Base Reset & Typography
+============================ */
 * {
     margin: 0;
     padding: 0;
@@ -6,14 +9,48 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
-    background-color: #f4f6f8;
+    background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
     color: #333;
+    min-height: 100vh;
 }
 
 i, svg {
     pointer-events: none;
 }
 
+/* ============================
+   Page Title (Simple + Shiny Text)
+============================ */
+.page-title {
+    position: relative;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #333, #555, #333);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerText 3s infinite linear;
+}
+
+@keyframes shimmerText {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+
+
+
+/* ============================
+   Main Layout
+============================ */
 .main-container {
     display: flex;
     min-height: 100vh;
@@ -22,18 +59,21 @@ i, svg {
     justify-content: center;
 }
 
-/* Individual Pads */
+
+/* ============================
+   Pad Elements
+============================ */
 .kick-pad, .snare-pad, .hihat-pad {
     width: 4.5rem;
     height: 4.5rem;
     margin: 0.5rem;
     cursor: pointer;
     border-radius: 10px;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s;
+    border: 1px solid #ccc;
 }
 
-/* Base Colors */
+/* Base Pad Colors */
 .kick-pad {
     background-color: #d1e9ff;
 }
@@ -46,69 +86,91 @@ i, svg {
     background-color: #e9d8fd;
 }
 
-/* Active */
+/* Active Pad Styles - Subtle Difference */
 .kick-pad.active {
-    background-color: #a6d4fa;
-    transform: scale(1.05);
+    background-color: #b3d8f5;
 }
 
 .snare-pad.active {
-    background-color: #ffe69c;
-    transform: scale(1.05);
+    background-color: #fce99c;
 }
 
 .hihat-pad.active {
-    background-color: #d6bbf7;
-    transform: scale(1.05);
+    background-color: #d7c0f0;
 }
 
-/* Pad groups */
+
+/* ============================
+   Pad Group Layout
+============================ */
 .kick, .snare, .hihat {
     display: flex;
 }
 
-/* Track Layout */
+
+/* ============================
+   Track Layout
+============================ */
 .kick-track, .snare-track, .hihat-track {
     display: flex;
     align-items: center;
-    width: 80%;
     justify-content: space-between;
-    margin-top: 3rem;
+    width: 80%;
+    margin-top: 2.5rem;
     background-color: #ffffff;
     border-radius: 12px;
     padding: 1rem 2rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Controls */
+
+/* ============================
+   Controls (Track Name + Mute)
+============================ */
 .controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex: 1;
     margin: 0 2rem;
+    gap: 1.5rem;
 }
 
 .controls h1 {
     font-size: 1.2rem;
-    color: #444;
+    font-weight: 500;
+    color: #333;
+    background-color: #e9ecef;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .controls button {
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 1rem;
     border: none;
-    background: #6c757d;
+    background: #adb5bd;
     color: #fff;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
     border-radius: 8px;
     transition: background 0.3s;
 }
 
 .controls button:hover {
-    background: #5a6268;
+    background: #8d99a6;
 }
 
+.mute.active {
+    background-color: #dee2e6 !important;
+    color: #495057;
+    font-weight: 500;
+}
+
+
+/* ============================
+   Sound Select Dropdown
+============================ */
 select {
     padding: 0.6rem;
     font-size: 1rem;
@@ -118,18 +180,20 @@ select {
     color: #333;
 }
 
-/* Play Button */
+
+/* ============================
+   Play Button
+============================ */
 .play {
     padding: 1rem 2rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     background-color: #0d6efd;
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 4rem;
+    margin-top: 3rem;
     transition: background 0.3s;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .play:hover {
@@ -140,12 +204,70 @@ select {
     background-color: #dc3545;
 }
 
-/* Animation */
+
+/* ============================
+   Animation for Pad Playback
+============================ */
 @keyframes playTrack {
     from {
         transform: scale(1);
     }
     to {
-        transform: scale(1.15);
+        transform: scale(1.1);
     }
+}
+
+
+/* ============================
+   Tempo Control
+============================ */
+.tempo {
+    margin: 3rem auto;
+    width: 30%;
+    text-align: center;
+}
+
+.tempo p {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: #444;
+}
+
+.tempo-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #dee2e6;
+    border-radius: 1rem;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 1rem 0;
+}
+
+.tempo-slider:hover {
+    background: #ced4da;
+}
+
+/* WebKit Thumb */
+.tempo-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0d6efd;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+/* Firefox Thumb */
+.tempo-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0d6efd;
+    border: 2px solid white;
+    cursor: pointer;
 }
