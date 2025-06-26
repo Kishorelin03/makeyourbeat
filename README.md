@@ -19,9 +19,7 @@
   </ul>
 
   <h2>📸 Preview</h2>
-  <p><em> screenshots</em></p>
-  <h2>📸 Preview</h2>
-<img src="assets/makeYourBeat_1.png" alt="Drumkit Preview" style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+  <img src="assets/makeYourBeat_1.png" alt="Drumkit Preview" style="max-width: 50%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
 
   <h2>💡 How to Run</h2>
   <ol>
